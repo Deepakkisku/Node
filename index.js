@@ -37,6 +37,7 @@ const server = http.createServer(requestData);
 
 // import the file  
 const calculator = require("./calculator");
+const { url } = require("inspector");
 const additon = calculator.add(4,6);
 console.log("addition", additon);
 
@@ -54,3 +55,14 @@ server.listen(port, (err) => {
     console.log("server is up and running");
 });
 
+
+
+// About creating a new branch 
+// 1. copy the url
+// 2. git clone url
+// 3. open the code in your vs code
+// 4. checkout a new branch (git checkout -b branchName)
+// 5. make your change
+// 6. commit and push
+// 7. create the PR
+// 8. add reviewer to review
