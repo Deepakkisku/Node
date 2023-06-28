@@ -8,30 +8,41 @@ const fs = require("fs");
 //     res.end("hello Node");
 // }
 
+function requestData(req, res) {
+    if (req.method == "GET") {
+        res.statusCode = 200
+        res.end("hello");
+    } else if (req.method == "POST") {
+        res.send("Post req");
+    } else {
+        res.send("Else loop");
+    }
+};
+
 
 // make two more routes for the same, use the switch case to handle all the req
 
-const requestData = (req, res) => {
-    console.log("req", req.url);
-    if(req.url === "/profile"){
-        fs.readFile("./profile.html", (err,data) =>{
-            if(err){
-                console.log("Error in profile page", err);
-                res.end("Ahaa error while fetching the data")
-            }
-            return res.end(data)
-        });
-    }
-    else {
-        fs.readFile("./noData.html",(err, data) => {
-            if(err){
-                console.log("Error in profile page", err);
-                res.end("Ahaa error while fetching the data")
-            }
-            return res.end(data)
-        });
-    }
-};
+// const requestData = (req, res) => {
+//     console.log("req", req.url);
+//     if(req.url === "/profile"){
+//         fs.readFile("./profile.html", (err,data) =>{
+//             if(err){
+//                 console.log("Error in profile page", err);
+//                 res.end("Ahaa error while fetching the data")
+//             }
+//             return res.end(data)
+//         });
+//     }
+//     else {
+//         fs.readFile("./noData.html",(err, data) => {
+//             if(err){
+//                 console.log("Error in profile page", err);
+//                 res.end("Ahaa error while fetching the data")
+//             }
+//             return res.end(data)
+//         });
+//     }
+// };
 
 const server = http.createServer(requestData);
 
